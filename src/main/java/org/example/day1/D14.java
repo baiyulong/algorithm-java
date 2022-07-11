@@ -13,7 +13,7 @@ public class D14 {
     public static void main(String[] args) {
         int[] arr = randomArray(10, 50);
         print(arr);
-        f(arr);
+        f2(arr);
         print(arr);
     }
 
@@ -33,6 +33,21 @@ public class D14 {
                 cur--;
             }
         }
+    }
 
+    public static void f2(int[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return;
+        }
+        // 0 ~ 1
+        // 0 ~ 2
+        // 0 ~ 3
+        // 0 ~ n - 1
+        int n = arr.length;
+        for (int end = 0; end < n; end++) {
+            for (int pre = end - 1; pre >= 0 && arr[pre] > arr[pre + 1]; pre--) {
+                swap(arr, pre, pre + 1);
+            }
+        }
     }
 }
