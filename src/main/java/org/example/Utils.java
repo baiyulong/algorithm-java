@@ -17,6 +17,14 @@ public final class Utils {
         System.out.println("]");
     }
 
+    public static void printLinkedList(SingleNode head) {
+        System.out.print(head.value + " -> ");
+        while (head.next != null) {
+            System.out.print(head.next.value + " -> ");
+            head = head.next;
+        }
+    }
+
     public static int[] randomArray(int maxLength, int max) {
         int[] arr = new int[maxLength];
         for (int i = 0; i < maxLength - 1; i++) {
