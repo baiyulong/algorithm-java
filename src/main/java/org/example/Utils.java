@@ -23,6 +23,7 @@ public final class Utils {
             System.out.print(head.next.value + " -> ");
             head = head.next;
         }
+        System.out.println();
     }
 
     public static int[] randomArray(int maxLength, int max) {

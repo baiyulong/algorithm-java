@@ -25,30 +25,36 @@ public class D33 {
         if (head == null || head.next == null) {
             return head;
         }
-        SingleNode preTail;
-        SingleNode s = head;
-        SingleNode e = getEnd(s, k);
-        if (e == null) {
-            return head;
-        }
-        SingleNode t = e.next;
-        e.next = null;
-        e = s;
-        s = reverse(s);
-        head = s;
-        preTail = e;
-        s = t;
-        preTail.next = s;
-        e = getEnd(s, k);
-        while (e != null) {
-            t = e.next;
-            e.next = null;
-            e = s;
-            s = reverse(s);
-            preTail = e;
-            preTail.next = s;
-            s = t;
-            e = getEnd(s, k);
+        SingleNode pt = null;
+        SingleNode ih = head;
+        SingleNode t = head;
+        head = getEnd(head, k);
+        while (ih != null) {
+            // 2. Find a new group end
+            t = getEnd(ih, k);
+            if (t == null) {
+                break;
+            }
+            // 1. Cut down pre group
+            if (pt != null) {
+                pt.next = null;
+            }
+            // 3. Mark next group
+            SingleNode nh = t.next;
+            // 4. Cut down t and nh
+            t.next = null;
+            // 5. Reverse new group
+            reverse(ih);
+            // 6. Link reversed group to list
+            ih.next = nh;
+            // 9. Reset pt.next
+            if (pt != null) {
+                pt.next = t;
+            }
+            // 7. Reset pt
+            pt = ih;
+            // 8. Reset ih
+            ih = nh;
         }
         return head;
     }
