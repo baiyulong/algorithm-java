@@ -5,7 +5,7 @@ import org.example.TreeNode;
 
 /**
  * 2022-08-01
- * 二叉树遍历
+ * 二叉树递归遍历
  *
  * @author YULONG
  */
