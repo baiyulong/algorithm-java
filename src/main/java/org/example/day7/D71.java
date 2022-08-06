@@ -21,7 +21,7 @@ public class D71 {
         head.left.right = new TreeNode(5);
         head.right.left = new TreeNode(6);
         head.right.right = new TreeNode(7);
-        pos(head);
+        pos1(head);
     }
 
     public static void pre(TreeNode head) {
@@ -47,6 +47,17 @@ public class D71 {
         if (head == null) {
             return;
         }
+        Stack<TreeNode> stack = new Stack<>();
+        while (!stack.isEmpty() || head != null) {
+            if (head == null) {
+                head = stack.pop();
+                System.out.println(head.value);
+                head = head.right;
+            } else {
+                stack.push(head);
+                head = head.left;
+            }
+        }
     }
 
     public static void pos(TreeNode head) {
@@ -67,7 +78,7 @@ public class D71 {
             }
         }
         while (!stack2.isEmpty()) {
-            System.out.println(stack2.pop().value);
+            System.out.print(stack2.pop().value);
         }
     }
 
@@ -76,8 +87,19 @@ public class D71 {
             return;
         }
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode h = null;
-        TreeNode c = head;
-
+        stack.push(head);
+        TreeNode out = null;
+        TreeNode cur = null;
+        while (!stack.isEmpty()) {
+            cur = stack.peek();
+            if (cur.left != null && cur.left != out && cur.right != out) {
+                stack.push(cur.left);
+            } else if (cur.right != null && cur.right != out) {
+                stack.push(cur.right);
+            } else {
+                out = stack.pop();
+                System.out.print(out.value);
+            }
+        }
     }
 }
