@@ -1,6 +1,6 @@
 package org.example.day3;
 
-import org.example.SingleNode;
+import org.example.Node;
 import org.example.Utils;
 
 /**
@@ -14,20 +14,20 @@ import org.example.Utils;
 public class D33 {
 
     public static void main(String[] args) {
-        SingleNode head = new SingleNode(1);
+        Node head = new Node(1);
         head.next(2).next(3).next(4).next(5).next(6).next(7).next(8);
         Utils.printLinkedList(head);
         head = f(head, 3);
         Utils.printLinkedList(head);
     }
 
-    public static SingleNode f(SingleNode head, int k) {
+    public static Node f(Node head, int k) {
         if (head == null || head.next == null) {
             return head;
         }
-        SingleNode pt = null;
-        SingleNode ih = head;
-        SingleNode t = head;
+        Node pt = null;
+        Node ih = head;
+        Node t = head;
         head = getEnd(head, k);
         while (ih != null) {
             // 2. Find a new group end
@@ -40,7 +40,7 @@ public class D33 {
                 pt.next = null;
             }
             // 3. Mark next group
-            SingleNode nh = t.next;
+            Node nh = t.next;
             // 4. Cut down t and nh
             t.next = null;
             // 5. Reverse new group
@@ -59,8 +59,8 @@ public class D33 {
         return head;
     }
 
-    private static SingleNode getEnd(SingleNode head, int k) {
-        SingleNode h = head;
+    private static Node getEnd(Node head, int k) {
+        Node h = head;
         for (int i = 0; i < k - 1; i++) {
             h = h.next;
             if (h == null) {
@@ -71,9 +71,9 @@ public class D33 {
         return h;
     }
 
-    private static SingleNode reverse(SingleNode head) {
-        SingleNode cur = null;
-        SingleNode tmp = null;
+    private static Node reverse(Node head) {
+        Node cur = null;
+        Node tmp = null;
         while (head != null) {
             tmp = head.next;
             head.next = cur;

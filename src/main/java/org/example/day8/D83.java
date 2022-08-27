@@ -1,6 +1,6 @@
 package org.example.day8;
 
-import org.example.SingleNode;
+import org.example.Node;
 
 
 /**
@@ -12,9 +12,9 @@ import org.example.SingleNode;
 public class D83 {
 
     public static void main(String[] args) {
-        SingleNode head = new SingleNode(1);
+        Node head = new Node(1);
         head.next(2).next(3).next(4).next(5).next(6).next(7);
-        SingleNode mid = f(head);
+        Node mid = f(head);
         System.out.println(mid.value);
     }
 
@@ -26,12 +26,12 @@ public class D83 {
      * @author Bai Yulong
      * @since 0.1.0
      */
-    public static SingleNode f(SingleNode head) {
+    public static Node f(Node head) {
         if (head == null || head.next == null || head.next.next == null) {
             return head;
         }
-        SingleNode slow = head.next;
-        SingleNode fast = head.next.next;
+        Node slow = head.next;
+        Node fast = head.next.next;
         while (fast.next != null && fast.next.next != null) {
             fast = fast.next.next;
             slow = slow.next;
@@ -47,12 +47,12 @@ public class D83 {
      * @author Bai Yulong
      * @since 0.1.0
      */
-    public static SingleNode f1(SingleNode head) {
+    public static Node f1(Node head) {
         if (head == null || head.next == null || head.next.next == null) {
             return head;
         }
-        SingleNode slow = head.next;
-        SingleNode fast = head.next.next;
+        Node slow = head.next;
+        Node fast = head.next.next;
         while (fast.next != null && fast.next.next != null) {
             fast = fast.next.next;
             slow = slow.next;

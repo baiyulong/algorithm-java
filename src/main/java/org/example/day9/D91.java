@@ -1,6 +1,6 @@
 package org.example.day9;
 
-import org.example.SingleNode;
+import org.example.Node;
 
 import java.util.Stack;
 
@@ -14,7 +14,7 @@ import java.util.Stack;
 public class D91 {
 
     public static void main(String[] args) {
-        SingleNode head = new SingleNode(1);
+        Node head = new Node(1);
         head.next(2).next(3).next(2).next(1);
         boolean mid = f(head);
         System.out.println(mid);
@@ -28,7 +28,7 @@ public class D91 {
      * @author Bai Yulong
      * @since 0.1.0
      */
-    public static boolean f(SingleNode head) {
+    public static boolean f(Node head) {
         if (head == null) {
             return false;
         }
@@ -39,16 +39,16 @@ public class D91 {
             return false;
         }
         // 之后说明链表至少有 3 个节点
-        SingleNode slow = head.next;
-        SingleNode fast = head.next.next;
+        Node slow = head.next;
+        Node fast = head.next.next;
         while (fast.next != null && fast.next.next != null) {
             fast = fast.next.next;
             slow = slow.next;
         }
 
-        SingleNode cur = null;
-        SingleNode tmp;
-        SingleNode rHead = slow.next;
+        Node cur = null;
+        Node tmp;
+        Node rHead = slow.next;
 
         while (rHead != null) {
             tmp = rHead.next;
@@ -58,8 +58,8 @@ public class D91 {
         }
 
         boolean rs = false;
-        SingleNode l = head;
-        SingleNode r = cur;
+        Node l = head;
+        Node r = cur;
         while (l != null && r != null) {
             rs = r.equals(l);
             if (!rs) {
@@ -79,7 +79,7 @@ public class D91 {
         return rs;
     }
 
-    public static boolean f1(SingleNode head) {
+    public static boolean f1(Node head) {
         if (head == null) {
             return false;
         }
@@ -89,8 +89,8 @@ public class D91 {
         if (head.next.next == null) {
             return false;
         }
-        SingleNode node = head;
-        Stack<SingleNode> stack = new Stack<>();
+        Node node = head;
+        Stack<Node> stack = new Stack<>();
         while (node != null) {
             stack.push(node);
             node = node.next;

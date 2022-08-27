@@ -1,6 +1,6 @@
 package org.example.day4;
 
-import org.example.SingleNode;
+import org.example.Node;
 import org.example.Utils;
 
 
@@ -13,24 +13,24 @@ import org.example.Utils;
 public class D41 {
 
     public static void main(String[] args) {
-        SingleNode head1 = new SingleNode(1);
+        Node head1 = new Node(1);
         head1.next(2).next(3);
-        SingleNode head2 = new SingleNode(4);
+        Node head2 = new Node(4);
         head2.next(5).next(6).next(7);
-        SingleNode f = f(head1, head2);
+        Node f = f(head1, head2);
         Utils.printLinkedList(f);
     }
 
-    public static SingleNode f(SingleNode head1, SingleNode head2) {
+    public static Node f(Node head1, Node head2) {
         int len1 = length(head1);
         int len2 = length(head2);
         // Get longer and shorter linked list
         // We will change the longer list as the final list.
-        SingleNode l = len1 > len2 ? head1 : head2;
-        SingleNode s = l.equals(head1) ? head2 : head1;
-        SingleNode curl = l;
-        SingleNode curs = s;
-        SingleNode last = null;
+        Node l = len1 > len2 ? head1 : head2;
+        Node s = l.equals(head1) ? head2 : head1;
+        Node curl = l;
+        Node curs = s;
+        Node last = null;
         int carry = 0;
         int sum = 0;
         // 1. Traversal part of the two list that each node is not null
@@ -52,12 +52,12 @@ public class D41 {
         }
         // 3. Last process
         if (carry != 0) {
-            last.next = new SingleNode(carry);
+            last.next = new Node(carry);
         }
         return l;
     }
 
-    private static int length(SingleNode head) {
+    private static int length(Node head) {
         int len = 0;
         while (head != null) {
             len++;

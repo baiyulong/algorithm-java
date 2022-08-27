@@ -1,8 +1,6 @@
 package org.example.day10;
 
-import org.example.SingleNode;
-
-import java.util.Stack;
+import org.example.Node;
 
 
 /**
@@ -14,25 +12,23 @@ import java.util.Stack;
 public class D101 {
 
     public static void main(String[] args) {
-        SingleNode head = new SingleNode(3);
+        Node head = new Node(3);
         head.next(2).next(3).next(5).next(6).next(1).next(3).next(0);
-        SingleNode nHead = f(head, 3);
+        Node nHead = f(head, 3);
         System.out.println(nHead.value);
     }
 
     /**
-     * 奇数时返回中点，偶数时返回前中点
-     *
      * @param head 1
      * @return org.example.SingleNode
      * @author Bai Yulong
      * @since 0.1.0
      */
-    public static SingleNode f(SingleNode head, int n) {
+    public static Node f(Node head, int n) {
         if (head == null) {
             return head;
         }
-        SingleNode sh = null, st = null, eh = null, et = null, bh = null, bt = null, next;
+        Node sh = null, st = null, eh = null, et = null, bh = null, bt = null, next;
         while (head != null) {
             next = head.next;
             head.next = null;

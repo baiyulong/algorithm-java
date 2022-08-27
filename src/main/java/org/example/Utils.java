@@ -17,7 +17,7 @@ public final class Utils {
         System.out.println("]");
     }
 
-    public static void printLinkedList(SingleNode head) {
+    public static void printLinkedList(Node head) {
         System.out.print(head.value + " -> ");
         while (head.next != null) {
             System.out.print(head.next.value + " -> ");
@@ -38,5 +38,29 @@ public final class Utils {
         int tmp = arr[i];
         arr[i] = arr[j];
         arr[j] = tmp;
+    }
+
+    public static Node loopHead(Node head) {
+        if (head == null) {
+            return null;
+        }
+        if (head.next == null || head.next.next == null) {
+            return head;
+        }
+        if (head.next.next == head) {
+            return head;
+        }
+        Node f = head.next.next;
+        Node s = head.next;
+        while (f != s) {
+            f = f.next.next;
+            s = s.next;
+        }
+        f = head;
+        while (f != s) {
+            f = f.next;
+            s = s.next;
+        }
+        return f;
     }
 }

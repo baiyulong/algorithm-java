@@ -5,16 +5,16 @@ import java.util.Objects;
 /**
  * @author YULONG
  */
-public class SingleNode {
+public class Node {
     public int value;
-    public SingleNode next;
+    public Node next;
 
-    public SingleNode(int value) {
+    public Node(int value) {
         this.value = value;
     }
 
-    public SingleNode next(int value) {
-        this.next = new SingleNode(value);
+    public Node next(int value) {
+        this.next = new Node(value);
         return this.next;
     }
 
@@ -22,7 +22,7 @@ public class SingleNode {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SingleNode that = (SingleNode) o;
+        Node that = (Node) o;
         return value == that.value;
     }
 

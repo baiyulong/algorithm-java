@@ -1,6 +1,6 @@
 package org.example.day3;
 
-import org.example.SingleNode;
+import org.example.Node;
 
 /**
  * 2022-07-11
@@ -11,20 +11,20 @@ import org.example.SingleNode;
 public class D31 {
 
     public static void main(String[] args) {
-        SingleNode head = new SingleNode(1);
-        head.next = new SingleNode(2);
+        Node head = new Node(1);
+        head.next = new Node(2);
         System.out.println(head.value + " -> " + head.next.value);
-        head.next.next = new SingleNode(3);
+        head.next.next = new Node(3);
         head = f(head);
         System.out.println(head.value + " -> " + head.next.value);
     }
 
-    public static SingleNode f(SingleNode head) {
+    public static Node f(Node head) {
         if (head == null || head.next == null) {
             return head;
         }
-        SingleNode cur = null;
-        SingleNode tmp;
+        Node cur = null;
+        Node tmp;
         while (head != null) {
             tmp = head.next;
             head.next = cur;

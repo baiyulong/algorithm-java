@@ -1,6 +1,6 @@
 package org.example.day5;
 
-import org.example.SingleNode;
+import org.example.Node;
 import org.example.Utils;
 
 
@@ -13,25 +13,25 @@ import org.example.Utils;
 public class D51 {
 
     public static void main(String[] args) {
-        SingleNode head1 = new SingleNode(1);
+        Node head1 = new Node(1);
         head1.next(2).next(5);
-        SingleNode head2 = new SingleNode(3);
+        Node head2 = new Node(3);
         head2.next(4).next(7).next(8);
-        SingleNode f = f(head1, head2);
+        Node f = f(head1, head2);
         Utils.printLinkedList(f);
     }
 
-    public static SingleNode f(SingleNode head1, SingleNode head2) {
+    public static Node f(Node head1, Node head2) {
         if (head1 == null) {
             return head2;
         }
         if (head2 == null) {
             return head1;
         }
-        SingleNode head = head1.value < head2.value ? head1 : head2;
-        SingleNode cur1 = head.next;
-        SingleNode cur2 = head == head1 ? head2 : head1;
-        SingleNode pre = head;
+        Node head = head1.value < head2.value ? head1 : head2;
+        Node cur1 = head.next;
+        Node cur2 = head == head1 ? head2 : head1;
+        Node pre = head;
         while (cur1 != null && cur2 != null) {
             if (cur1.value <= cur2.value) {
                 pre.next = cur1;
